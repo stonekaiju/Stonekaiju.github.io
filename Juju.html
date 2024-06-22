@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claude Code Test Page - Slideshow</title>
     <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+        }
         .slideshow-container {
             max-width: 1000px;
             position: relative;
@@ -38,9 +49,7 @@
     </style>
 </head>
 <body>
-    <center>
     <h1>AI-LIKE-STUDIOS</h1>
-    </center>
     
     <div class="slideshow-container">
         <div class="slide">
@@ -71,3 +80,11 @@
             let slides = document.getElementsByClassName("slide");
             if (n > slides.length) {slideIndex = 1}    
             if (n < 1) {slideIndex = slides.length}
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+    </script>
+</body>
+</html>
