@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated GIF Slideshow with Controls</title>
+    <style>
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        .slide {
+            display: none;
+        }
+        .slide img {
+            width: 100%;
+        }
+        .control-panel {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .control-panel button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #play-pause-gif {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="https://example.com/animated-gif1.gif" alt="Animated Slide 1">
+        </div>
+        <div class="slide fade">
+            <img src="https://example.com/animated-gif2.gif" alt="Animated Slide 2">
+        </div>
+        <div class="slide fade">
+            <img src="https://example.com/animated-gif3.gif" alt="Animated Slide 3">
+        </div>
+    </div>
+    
+    <div class="control-panel">
+        <button onclick="prevSlide()">Previous</button>
+        <button onclick="togglePlayPause()">Play/Pause</button>
+        <button onclick="nextSlide()">Next</button>
+        <img id="play-pause-gif" src="https://example.com/play.gif" alt="Play/Pause Status">
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        let playing = false;
+        let slideInterval;
+
+        showSlides(slideIndex);
+
+        function nextSlide() {
+            showSlides(slideIndex += 1);
+        }
+
+        function prevSlide() {
+            showSlides(slideIndex -= 1);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+
+        function togglePlayPause() {
+            let playPauseGif = document.getElementById("play-pause-gif");
+            if (playing) {
+                clearInterval(slideInterval);
+                playPauseGif.src = "https://example.com/play.gif";
+            } else {
+                slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+                playPauseGif.src = "https://example.com/pause.gif";
+            }
+            playing = !playing;
+        }
+    </script>
+</body>
+</html>
