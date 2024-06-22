@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-LIKE-STUDIOS Slideshow</title>
+    <title>Claude Code Test Page - Slideshow</title>
     <style>
         body {
             background-color: black;
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: sans-serif;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
         h1 {
             color: white;
-            text-align: center;
         }
         .slideshow-container {
             max-width: 1000px;
@@ -26,14 +26,6 @@
         }
         .slide img {
             width: 100%;
-        }
-        .slide-text {
-            position: absolute;
-            bottom: 15px;
-            width: 100%;
-            text-align: center;
-            background-color: rgba(0,0,0,0.7);
-            padding: 10px 0;
         }
         .prev, .next {
             cursor: pointer;
@@ -54,133 +46,47 @@
             right: 0;
             border-radius: 3px 0 0 3px;
         }
-        .dot-container {
-            text-align: center;
-            padding: 20px 0;
-        }
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-        .active, .dot:hover {
-            background-color: #717171;
-        }
-        #playPauseBtn {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
+    <center>
     <h1>AI-LIKE-STUDIOS</h1>
+    </center>
     
     <div class="slideshow-container">
         <div class="slide">
-            <img src="https://s10.gifyu.com/images/SrqKL.gif" alt="Animated futuristic cityscape">
-            <div class="slide-text">Decentralized AI</div>
+            <img src="https://live.staticflickr.com/65535/53807623000_57fbf10a31_b.jpg" alt="Slide 1">
         </div>
         
         <div class="slide">
-            <img src="https://s12.gifyu.com/images/SrqK3.gif" alt="Colorful abstract fluid animation">
-            <div class="slide-text">Open Source</div>
+            <img src="https://ezgif.com/save/ezgif-5-205afa90e7.gif" alt="Slide 2">
         </div>
         
         <div class="slide">
-            <img src="https://s12.gifyu.com/images/SrmO4.gif" alt="Glowing neon geometric shapes">
-            <div class="slide-text">Threat Mitigation</div>
-        </div>
-        
-        <div class="slide">
-            <img src="https://s12.gifyu.com/images/SrmPO.gif" alt="Rotating 3D cube with changing textures">
-            <div class="slide-text">A Vision Realized</div>
+            <img src="https://live.staticflickr.com/65535/53807642983_4c2382b91d_b.jpg" alt="Slide 3">
         </div>
         
         <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
         <a class="next" onclick="changeSlide(1)">&#10095;</a>
     </div>
 
-    <div class="dot-container">
-        <span class="dot" onclick="currentSlide(1)"></span> 
-        <span class="dot" onclick="currentSlide(2)"></span> 
-        <span class="dot" onclick="currentSlide(3)"></span> 
-        <span class="dot" onclick="currentSlide(4)"></span> 
-    </div>
-
-
-
-
-    
-    <button id="playPauseBtn" onclick="toggleAutoplay()">Pause</button>
-
-    <audio id="backgroundMusic" loop>
-        <source src="./Echoesbelow.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
     <script>
         let slideIndex = 1;
-        let autoplayInterval;
-        const audioElement = document.getElementById('backgroundMusic');
-        
         showSlides(slideIndex);
-        startAutoplay();
 
         function changeSlide(n) {
             showSlides(slideIndex += n);
         }
 
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
         function showSlides(n) {
-            let i;
             let slides = document.getElementsByClassName("slide");
-            let dots = document.getElementsByClassName("dot");
             if (n > slides.length) {slideIndex = 1}    
             if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
+            for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";  
             }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
             slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active";
         }
-
-        function startAutoplay() {
-            autoplayInterval = setInterval(() => {
-                changeSlide(1);
-            }, 5000); // Change slide every 5 seconds
-        }
-
-        function stopAutoplay() {
-            clearInterval(autoplayInterval);
-        }
-
-        function toggleAutoplay() {
-            const btn = document.getElementById('playPauseBtn');
-            if (btn.textContent === 'Pause') {
-                stopAutoplay();
-                btn.textContent = 'Play';
-                audioElement.pause();
-            } else {
-                startAutoplay();
-                btn.textContent = 'Pause';
-                audioElement.play();
-            }
-        }
-
-        // Start playing music when the page loads
-        window.onload = function() {
-            audioElement.play();
+    </script>
+</body>
+</html>
